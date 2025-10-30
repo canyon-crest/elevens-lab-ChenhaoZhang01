@@ -51,7 +51,15 @@ public class Shuffler3 {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int mid = values.length / 2;
+		for (int i = 0; i < mid; i++) {
+			shuffled[2 * i] = values[i];
+			shuffled[2 * i + 1] = values[mid + i];
+		}
+		for (int i = 0; i < values.length; i++) {
+			values[i] = shuffled[i];
+		}
 	}
 
 	/**
@@ -66,6 +74,39 @@ public class Shuffler3 {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for (int i = values.length - 1; i > 0; i--) {
+			int j = (int) (Math.random() * (i + 1));
+			int temp = values[i];
+			values[i] = values[j];
+			values[j] = temp;
+		}
 	}
+	public boolean arePermutations(int[] array1, int[] array2) {
+	    if (array1.length != array2.length) {
+	        return false;
+	    }
+
+	    int[] count = new int[256];
+
+	    for (int value : array1) {
+	        count[value]++;
+	    }
+
+	    for (int value : array2) {
+	        count[value]--;
+	        if (count[value] < 0) {
+	            return false;
+	        }
+	    }
+
+	    return true;
+	}
+	public String flip() {
+	    if (Math.random() < 2.0/3.0) {
+	        return "Heads";
+	    } else {
+	        return "Tails";
+	    }
+	}
+	
 }
