@@ -10,5 +10,17 @@ public class CardTester1 {
 	 */
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		Card1 card1 = new Card1("Ace", "Hearts", 1);
+		Card1 card2 = new Card1("King", "Diamonds", 10);
+		Card1 card3 = new Card1("Ace", "Hearts", 1);
+		card1.toString();
+		System.out.println(card1);
+		System.out.println(card2);
+		System.out.println(card3);
+		System.out.println(card1.pointValue());
+		System.out.println(card2.pointValue());
+		System.out.println(card1.matches(card2));
+		System.out.println(card1.matches(card3));
+
 	}
 }
