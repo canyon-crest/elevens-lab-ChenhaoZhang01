@@ -9,6 +9,13 @@ public class DeckTester2 {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		String[] ranks = {"jack", "queen", "king"};
+		String[] suits = {"blue", "red"};
+		int[] pointValues = {11, 12, 13};
+		Deck2 d = new Deck2(ranks, suits, pointValues);
+		System.out.println(d.toString());
+		System.out.println(d.isEmpty());
+		System.out.println(d.size());
+		System.out.println(d.deal());
 	}
 }
