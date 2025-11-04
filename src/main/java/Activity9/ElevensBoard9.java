@@ -1,6 +1,5 @@
 package Activity9;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -54,6 +53,11 @@ public class ElevensBoard9 extends Board9 {
 	 */
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
+		if (selectedCards.size() == 2) {
+			return containsPairSum11(selectedCards);
+		} else if (selectedCards.size() == 3) {
+			return containsJQK(selectedCards);
+		}
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		return false;
 	}
@@ -68,6 +72,14 @@ public class ElevensBoard9 extends Board9 {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
+		List<Integer> cIndexes = cardIndexes();
+		if (containsPairSum11(cIndexes)) {
+			return true;
+		}
+		if (containsJQK(cIndexes)) {
+			return true;
+		}
+
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		return false;
 	}
@@ -81,6 +93,16 @@ public class ElevensBoard9 extends Board9 {
 	 *              contain an 11-pair; false otherwise.
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
+		for (int k = 0; k < selectedCards.size(); k++) {
+			int i = selectedCards.get(k).intValue();
+			for (int j = k + 1; j < selectedCards.size(); j++) {
+				int m = selectedCards.get(j).intValue();
+				if (cardAt(i).pointValue() + cardAt(m).pointValue() == 11) {
+					return true;
+				}
+			}
+		}
+
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		return false;
 	}
@@ -94,6 +116,22 @@ public class ElevensBoard9 extends Board9 {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
+		boolean foundJack = false;
+		boolean foundQueen = false;
+		boolean foundKing = false;	
+		for (Integer kObj : selectedCards) {
+			int k = kObj.intValue();
+			if (cardAt(k).rank().equals("jack")) {
+				foundJack = true;
+			} else if (cardAt(k).rank().equals("queen")) {
+				foundQueen = true;
+			} else if (cardAt(k).rank().equals("king")) {
+				foundKing = true;
+			}
+		}		if (foundJack && foundQueen && foundKing) {
+			return true;
+		}
+
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 		return false;
 	}

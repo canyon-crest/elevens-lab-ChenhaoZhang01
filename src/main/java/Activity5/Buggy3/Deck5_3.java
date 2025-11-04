@@ -62,7 +62,7 @@ public class Deck5_3 {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		for (int k = cards.size() - 1; k < 0; k--) { // BUG: < should be >
+		for (int k = cards.size() - 1; k < 0; k--) {
 			int howMany = k + 1;
 			int start = 0;
 			int randPos = (int) (Math.random() * howMany) + start;

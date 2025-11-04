@@ -1,6 +1,6 @@
 package Activity5.Buggy2;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Deck class represents a shuffled deck of cards.
@@ -32,7 +32,7 @@ public class Deck5_2 {
 	 */
 	public Deck5_2(String[] ranks, String[] suits, int[] values) {
 		cards = new ArrayList<Card5_2>();
-		for (int j = 1; j < ranks.length; j++) { // BUG: j = 1 should be j = 0
+		for (int j = 1; j < ranks.length; j++) {
 			for (String suitString : suits) {
 				cards.add(new Card5_2(ranks[j], suitString, values[j]));
 			}

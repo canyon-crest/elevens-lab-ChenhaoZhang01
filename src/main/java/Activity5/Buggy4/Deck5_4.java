@@ -79,7 +79,7 @@ public class Deck5_4 {
 	 *         previously dealt.
 	 */
 	public Card5_4 deal() {
-		size--; // BUG: this statement should follow the isEmpty check
+		size--;
 		if (isEmpty()) {
 			return null;
 		}
